@@ -1,0 +1,7 @@
+<ul class="header-nav nav">
+  <app-navlink
+    *ngFor="let link of links"
+    [link] = "link"
+    >{{ link.name }}
+  </app-navlink>
+</ul>
