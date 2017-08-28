@@ -1,26 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NavlinkComponent} from './navlink/navlink.component';
-import { Link } from '../../models/link';
+import { NavlinksService } from '../../shared/services/navlinks.service';
+import { Link } from '../../models/link.model';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.css'],
+  providers: [NavlinksService]
 })
 export class NavigationComponent implements OnInit {
-  links: Link[] = [
-    {
-      name: 'homeLink',
-      displayName: 'Home',
-      href: '#'
-    },
-    {
-      name: 'aboutLink',
-      displayName: 'About',
-      href: '#'
-    }
-  ];
-  constructor() { }
+  navlinks: Link[] = this.navlinksService.getNavlinks();
+  constructor (private navlinksService: NavlinksService) { }
 
   ngOnInit() {
   }
